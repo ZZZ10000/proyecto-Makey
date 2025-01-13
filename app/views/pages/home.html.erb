@@ -1,0 +1,58 @@
+<h1 class="text-center mt-5">Bienvenido a Makey Platform</h1>
+
+
+<!-- Carrusel Bootstrap -->
+<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <!-- Primera imagen -->
+    <div class="carousel-item active">
+      <img src="<%= asset_path('carousel1.jpg') %>" class="d-block w-100" alt="Primera imagen">
+    </div>
+    <!-- Segunda imagen -->
+    <div class="carousel-item">
+      <img src="<%= asset_path('carousel2.jpg') %>" class="d-block w-100" alt="Segunda imagen">
+    </div>
+    <!-- Tercera imagen -->
+    <div class="carousel-item">
+      <img src="<%= asset_path('carousel3.jpg') %>" class="d-block w-100" alt="Tercera imagen">
+    </div>
+  </div>
+
+  <!-- Controles del carrusel -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Anterior</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Siguiente</span>
+  </button>
+</div>
+
+<!-- Estilos adicionales -->
+<style>
+  .carousel-item img {
+    height: 500px;
+    object-fit: cover;
+  }
+</style>
+
+
+
+
+
+<!-- Imagen destacada de la empresa -->
+<div class="text-center">
+  <%= image_tag "empresa.jpg", alt: "Imagen de Makey Platform", class: "img-fluid rounded my-4", width: 600 %>
+</div>
+
+<!-- Relato inicial sobre la empresa -->
+<div class="container mt-4">
+  <h2 class="text-center">¿Quiénes Somos?</h2>
+  <p class="lead text-center">
+    En Makey Platform nos especializamos en la automatización de procesos, la capacitación en inteligencia artificial 
+    y la asesoría en proyectos de ciencia de datos. Nuestro objetivo es proporcionar herramientas tecnológicas para 
+    impulsar la innovación y eficiencia en tu empresa.
+  </p>
+</div>
+

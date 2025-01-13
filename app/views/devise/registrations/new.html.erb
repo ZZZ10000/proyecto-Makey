@@ -1,0 +1,33 @@
+<!-- app/views/devise/registrations/new.html.erb -->
+<h2>Registrarse</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { multipart: true }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="mb-3">
+    <%= f.label :email, class: "form-label" %>
+    <%= f.email_field :email, autofocus: true, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :password, class: "form-label" %>
+    <%= f.password_field :password, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :password_confirmation, class: "form-label" %>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :avatar, "Foto de Perfil", class: "form-label" %>
+    <%= f.file_field :avatar, class: "form-control" %>
+  </div>
+
+  <div class="text-center">
+    <%= f.submit "Registrarse", class: "btn btn-primary" %>
+  </div>
+
+<% end %>
+
+
