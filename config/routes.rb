@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "about", to: "pages#about", as: :about
   get "contact", to: "pages#contact", as: :contact
 
-  # Rutas de contenido con todas las acciones CRUD para un posible uso futuro
+  # Rutas de contenido con todas las acciones CRUD
   resources :contents
 
   # Ruta raíz (home principal)

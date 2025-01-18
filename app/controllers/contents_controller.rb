@@ -1,10 +1,13 @@
 # app/controllers/contents_controller.rb
 class ContentsController < ApplicationController
-  before_action :authenticate_user!, only: [ :new, :create, :edit, :update, :destroy ]
-  before_action :set_content, only: [ :edit, :update, :destroy ]
+  before_action :authenticate_user!, except: [ :index, :show ]
+  before_action :set_content, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @contents = Content.all
+  end
+
+  def show
   end
 
   def new
@@ -14,19 +17,20 @@ class ContentsController < ApplicationController
   def create
     @content = Content.new(content_params)
     if @content.save
-      redirect_to contents_path, notice: "Contenido creado exitosamente."
+      redirect_to @content, notice: "Contenido creado exitosamente."
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     if @content.update(content_params)
-      redirect_to contents_path, notice: "Contenido actualizado con éxito."
+      redirect_to @content, notice: "Contenido actualizado con éxito."
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -42,6 +46,6 @@ class ContentsController < ApplicationController
   end
 
   def content_params
-    params.require(:content).permit(:title, :description, :image)
+    params.require(:content).permit(:title, :description, :image, :video)
   end
 end
