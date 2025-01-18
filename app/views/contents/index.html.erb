@@ -1,29 +1,16 @@
-<h1 class="text-center mb-4">Lista de Contenidos</h1>
-
-<!-- Botón para agregar nuevo contenido (solo visible para admin) -->
-<% if user_signed_in? && current_user.admin? %>
-  <div class="text-end mb-3">
-    <%= link_to "Agregar Nuevo Contenido", new_content_path, class: "btn btn-primary" %>
-  </div>
-<% end %>
-
 <div class="row row-cols-1 row-cols-md-3 g-4">
   <% @contents.each do |content| %>
     <div class="col">
       <div class="card h-100">
-        <!-- Video o Imagen del contenido -->
-        <% if content.video.attached? %>
-          <video class="card-img-top" controls style="height: 200px; object-fit: cover;">
-            <source src="<%= url_for(content.video) %>" type="video/mp4">
-            Tu navegador no soporta videos HTML5.
-          </video>
+        <% if content.videos.attached? %>
+          <% content.videos.each do |video| %>
+            <video class="card-img-top" controls style="height: 200px; object-fit: cover;">
+              <source src="<%= url_for(video) %>" type="video/mp4">
+              Tu navegador no soporta videos HTML5.
+            </video>
+          <% end %>
         <% elsif content.image.attached? %>
           <%= image_tag content.image, class: "card-img-top", alt: content.title, style: "height: 200px; object-fit: cover;" %>
-        <% elsif Rails.root.join('app', 'assets', 'videos', 'IA1.mp4').exist? %>
-          <video class="card-img-top" controls style="height: 200px; object-fit: cover;">
-            <source src="<%= asset_path('IA1.mp4') %>" type="video/mp4">
-            Tu navegador no soporta videos HTML5.
-          </video>
         <% else %>
           <div class="card-img-top d-flex align-items-center justify-content-center" style="height: 200px; background-color: #f0f0f0;">
             <span class="text-muted">Sin multimedia</span>
@@ -34,9 +21,8 @@
           <h5 class="card-title"><%= content.title %></h5>
           <p class="card-text"><%= content.description %></p>
         </div>
-
+        
         <div class="card-footer d-flex justify-content-between">
-          <!-- Enlaces de edición y eliminación (solo admin) -->
           <% if user_signed_in? && current_user.admin? %>
             <%= link_to "Editar", edit_content_path(content), class: "btn btn-warning" %>
             <%= button_to "Eliminar", content, method: :delete, data: { confirm: "¿Seguro que deseas eliminar este contenido?" }, class: "btn btn-danger" %>
@@ -46,6 +32,7 @@
     </div>
   <% end %>
 </div>
+
 
 
 

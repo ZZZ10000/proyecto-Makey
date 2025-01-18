@@ -1,6 +1,6 @@
 class Content < ApplicationRecord
   has_one_attached :image
-  has_one_attached :video
+  has_many_attached :videos
 
   validates :title, presence: true
   validates :description, presence: true
