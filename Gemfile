@@ -25,7 +25,7 @@ gem "devise"
 
 gem "figaro"
 
-gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.14"
 gem "mini_magick", "~> 4.13"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
